@@ -7,10 +7,18 @@ from flask import Flask, render_template as rend, session
 app = Flask(__name__)
 app.secret_key = urandom(13)
 
+items = [{'id': 0, 'name': "item", 'value': "0000", 'img': "image.jpg"},
+		 {'id': 1, 'name': "item", 'value': "0000", 'img': "image.jpg"},
+		 {'id': 2, 'name': "item", 'value': "0000", 'img': "image.jpg"},
+		 {'id': 3, 'name': "item", 'value': "0000", 'img': "image.jpg"},
+		 {'id': 4, 'name': "item", 'value': "0000", 'img': "image.jpg"},
+		 {'id': 5, 'name': "item", 'value': "0000", 'img': "image.jpg"}]
+
+
 @app.route('/')
 def index():
-	session['cart'] = ["item", "another item"]
-	return '<h1>Velkominn</h1>'
+	session['cart'] = []
+	return '<h1>Velkominn</h1><br><a href="/cart/0">add item</a>'
 
 @app.route('/cart')
 def cart():
@@ -18,6 +26,12 @@ def cart():
 	for item in session['cart']:
 		lepic += " " + item
 	return f'<h2>{lepic}</h2><a href="/">back</a>'
+
+@app.route('/cart/<int:ID>')
+def add(ID):
+	session['cart'].append("item")
+	return '<head><meta http-equiv="Refresh" content="1; url=/"></head>'
+
 
 @app.route('/get')
 def get_session():
