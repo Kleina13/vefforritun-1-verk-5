@@ -7,17 +7,17 @@ from flask import Flask, render_template as rend, session
 app = Flask(__name__)
 app.secret_key = urandom(13)
 
-items = [{'id': 0, 'name': "item", 'value': "0000", 'img': "image.jpg"},
-		 {'id': 1, 'name': "item", 'value': "0000", 'img': "image.jpg"},
-		 {'id': 2, 'name': "item", 'value': "0000", 'img': "image.jpg"},
-		 {'id': 3, 'name': "item", 'value': "0000", 'img': "image.jpg"},
-		 {'id': 4, 'name': "item", 'value': "0000", 'img': "image.jpg"},
-		 {'id': 5, 'name': "item", 'value': "0000", 'img': "image.jpg"}]
-
+items = [{'id': 0, 'name': "The Anarchist Cookbook", 'value': "3400", 'img': "acb.jpg"},
+		 {'id': 1, 'name': "The Communist Manifesto", 'value': "2100", 'img': "c_man.jpg"},
+		 {'id': 2, 'name': "Mein Kampf", 'value': "4800", 'img': "mein_k.jpg"},
+		 {'id': 3, 'name': "Quran", 'value': "2000", 'img': "Quran.jpg"},
+		 {'id': 4, 'name': "Lord of the Flies", 'value': "4600", 'img': "lotf.jpg"},
+		 {'id': 5, 'name': "The Gospel of the Flying Spaghetti Monster", 'value': "3700", 'img': "tgoftfsm.jpg"}]
 
 @app.route('/')
 def index():
-	session['cart'] = []
+	if 'cart' not in session:
+		session['cart'] = []
 	return '<h1>Velkominn</h1><br><a href="/cart/0">add item</a>'
 
 @app.route('/cart')
