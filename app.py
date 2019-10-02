@@ -1,37 +1,39 @@
 # APP
 
 from os import urandom
-from flask import Flask, render_template as rend, session
+from flask import Flask, render_template as rend, session, request
 # from pprint import pprint
 
 app = Flask(__name__)
 app.secret_key = urandom(13)
 
-items = [{'id': 0, 'name': "The Anarchist Cookbook", 'value': "3400", 'img': "acb.jpg"},
+books = [{'id': 0, 'name': "The Anarchist Cookbook", 'value': "3400", 'img': "acb.jpg"},
 		 {'id': 1, 'name': "The Communist Manifesto", 'value': "2100", 'img': "c_man.jpg"},
 		 {'id': 2, 'name': "Mein Kampf", 'value': "4800", 'img': "mein_k.jpg"},
 		 {'id': 3, 'name': "Quran", 'value': "2000", 'img': "Quran.jpg"},
 		 {'id': 4, 'name': "Lord of the Flies", 'value': "4600", 'img': "lotf.jpg"},
 		 {'id': 5, 'name': "The Gospel of the Flying Spaghetti Monster", 'value': "3700", 'img': "tgoftfsm.jpg"}]
 
+
 @app.route('/')
 def index():
-	if 'cart' not in session:
-		session['cart'] = []
-	return '<h1>Velkominn</h1><br><a href="/cart/0">add item</a>'
+	return rend('t.html', books=books)
 
 @app.route('/cart')
 def cart():
+	if 'cart' not in session:
+		return '<h2>Karfa tóm</h2><a href="/">back</a>'
 	lepic = ""
 	for item in session['cart']:
 		lepic += " " + item
 	return f'<h2>{lepic}</h2><a href="/">back</a>'
 
-@app.route('/cart/<int:ID>')
+@app.route('/cart/add/<int:ID>')
 def add(ID):
-	session['cart'].append("item")
+	if 'cart' not in session:
+		session['cart'] = []
+	session['cart'] += str(books[ID]['id'])
 	return '<head><meta http-equiv="Refresh" content="1; url=/"></head>'
-
 
 @app.route('/get')
 def get_session():
@@ -39,8 +41,8 @@ def get_session():
 		return str(session['cart'])
 	return 'your cart is empty'
 
-@app.route('/kill')
-def kill_user_session():
+@app.route('/clear')
+def clear_cart():
 	session.pop('cart', None)
 	return 'emptied your cart'
 

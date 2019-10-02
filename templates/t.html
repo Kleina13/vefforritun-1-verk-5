@@ -1,5 +1,10 @@
 {% extends "layout.html" %}
 
 {% block content %}
-  <h1>poop</h1>
+    {% for x in books %}
+        <div>
+            <h2>{{ x['name'] }}</h2>
+            <a href="/cart/add/{{ x['id'] }}">{{ x['value'] }}</a>
+        </div>
+    {% endfor %}
 {% endblock %}
