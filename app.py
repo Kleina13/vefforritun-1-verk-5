@@ -7,12 +7,12 @@ from flask import Flask, render_template as rend, session, request
 app = Flask(__name__)
 app.secret_key = urandom(13)
 
-books = [{'id': 0, 'name': "The Anarchist Cookbook", 'value': "3400", 'img': "acb.jpg"},
-		 {'id': 1, 'name': "The Communist Manifesto", 'value': "2100", 'img': "c_man.jpg"},
-		 {'id': 2, 'name': "Mein Kampf", 'value': "4800", 'img': "mein_k.jpg"},
-		 {'id': 3, 'name': "Quran", 'value': "2000", 'img': "Quran.jpg"},
-		 {'id': 4, 'name': "Lord of the Flies", 'value': "4600", 'img': "lotf.jpg"},
-		 {'id': 5, 'name': "The Gospel of the Flying Spaghetti Monster", 'value': "3700", 'img': "tgoftfsm.jpg"}]
+books = [{'id': 0, 'name': "The Anarchist Cookbook", 'value': "3400", 'image': "acb.jpg"},
+		 {'id': 1, 'name': "The Communist Manifesto", 'value': "2100", 'image': "c_man.jpg"},
+		 {'id': 2, 'name': "Mein Kampf", 'value': "4800", 'image': "mein_k.jpg"},
+		 {'id': 3, 'name': "Quran", 'value': "2000", 'image': "Quran.jpg"},
+		 {'id': 4, 'name': "Lord of the Flies", 'value': "4600", 'image': "lotf.jpg"},
+		 {'id': 5, 'name': "The Gospel of the Flying Spaghetti Monster", 'value': "3700", 'image': "tgoftfsm.jpg"}]
 
 
 @app.route('/')
@@ -26,25 +26,27 @@ def cart():
 	lepic = ""
 	for item in session['cart']:
 		lepic += " " + item
-	return f'<h2>{lepic}</h2><a href="/">back</a>'
+	return f'<h2>{lepic}</h2><a href="/">back</a> <a href="/clear">clear cart</a>'
 
 @app.route('/cart/add/<int:ID>')
 def add(ID):
 	if 'cart' not in session:
 		session['cart'] = []
 	session['cart'] += str(books[ID]['id'])
-	return '<head><meta http-equiv="Refresh" content="1; url=/"></head>'
+	return '<head><meta http-equiv="Refresh" content="0; url=/"></head>'
 
+@app.route('/clear')
+def clear_cart():
+	session.pop('cart', None)
+	return '<head><meta http-equiv="Refresh" content="2; url=/cart"></head>emptied your cart'
+
+# useless <<<<<<<<
 @app.route('/get')
 def get_session():
 	if 'cart' in session:
 		return str(session['cart'])
 	return 'your cart is empty'
-
-@app.route('/clear')
-def clear_cart():
-	session.pop('cart', None)
-	return 'emptied your cart'
+# useless <<<<<<<<
 
 # error <<<<<<<<<<
 @app.errorhandler(404)
