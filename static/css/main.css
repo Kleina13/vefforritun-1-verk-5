@@ -5,8 +5,51 @@ body, html {
 body {
     font-family: 'Roboto', sans-serif;
 }
+header {
+    text-align: center;
+    border: 2px red solid;
+}
+
+main {
+    display: grid;
+    grid-gap: 50px;
+    grid-template-columns: auto auto auto;
+    text-align: center;
+}
+
+h2 {
+    height: 65px; 
+    margin-top: 3px; 
+    grid-area: name;
+}
+
+div {
+    border: 2px black solid;
+    margin: 3px;
+    width: 300px;
+    float: left;
+    text-align: center;
+    display: grid;
+    grid-template-columns: name img order;
+    grid-template-areas: 
+    'name'
+    'img'
+    'order'
+}
 
 img {
-    width: 300px;
+    width: 250px;
     height: auto; 
+    grid-area: img;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.order {
+    grid-area: order;
 }
