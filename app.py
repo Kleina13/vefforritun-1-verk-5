@@ -7,12 +7,12 @@ from flask import Flask, render_template as rend, session, request
 app = Flask(__name__)
 app.secret_key = urandom(13)
 
-books = [{'id': 0, 'name': "The Anarchist Cookbook", 'value': "3400", 'image': "acb.jpg"},
-		 {'id': 1, 'name': "The Communist Manifesto", 'value': "2100", 'image': "c_man.jpg"},
-		 {'id': 2, 'name': "Mein Kampf", 'value': "4800", 'image': "mein_k.jpg"},
-		 {'id': 3, 'name': "Quran", 'value': "2000", 'image': "Quran.jpg"},
-		 {'id': 4, 'name': "Lord of the Flies", 'value': "4600", 'image': "lotf.jpg"},
-		 {'id': 5, 'name': "The Gospel of the Flying Spaghetti Monster", 'value': "3700", 'image': "tgoftfsm.jpg"}]
+books = [{'id': 0, 'name': "The Anarchist Cookbook", 'value': "34.99", 'image': "acb.jpg"},
+		 {'id': 1, 'name': "The Communist Manifesto", 'value': "21.99", 'image': "c_man.jpg"},
+		 {'id': 2, 'name': "Mein Kampf", 'value': "48.99", 'image': "mein_k.jpg"},
+		 {'id': 3, 'name': "Quran", 'value': "20.99", 'image': "Quran.jpg"},
+		 {'id': 4, 'name': "Lord of the Flies", 'value': "46.99", 'image': "lotf.jpg"},
+		 {'id': 5, 'name': "The Gospel of the Flying Spaghetti Monster", 'value': "37.99", 'image': "tgoftfsm.jpg"}]
 
 
 @app.route('/')

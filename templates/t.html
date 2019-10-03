@@ -1,19 +1,23 @@
 {% extends "layout.html" %}
 
 {% block content %}
-    <span class="items">
-    {% for x in books %}
-        <main>
-            <div>
-                <h2>{{ x['name'] }}</h2>
-                <img class="center" width=250px src="/static/{{ x['image'] }}">
-                <a class="order" href="/cart/add/{{ x['id'] }}">{{ x['value'] }}</a>
-            </div>
-        </main>
-    {% endfor %}
+    <span class="bleh">
+        <span class="items">
+        {% for x in books %}
+            <main>
+                <div>
+                    <h2>{{ x['name'] }}</h2>
+                    <span class="container">
+                    <img class="center" width=250px src="/static/{{ x['image'] }}">
+                    </span>
+                    <a class="order button" href="/cart/add/{{ x['id'] }}">{{ x['value'] }}$</a>
+                </div>
+            </main>
+        {% endfor %}
+        </span>
     </span>
     <br>
     <footer>
-        <a href="/cart">cart</a>
+        <a class="cartButton" href="/cart">cart</a>
     </footer>
 {% endblock %}
