@@ -1,9 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content %}
-    <header>
-        <h1>Lorem Ipsum</h1>
-    </header>
+    <span class="items">
     {% for x in books %}
         <main>
             <div>
@@ -13,6 +11,7 @@
             </div>
         </main>
     {% endfor %}
+    </span>
     <br>
     <footer>
         <a href="/cart">cart</a>
