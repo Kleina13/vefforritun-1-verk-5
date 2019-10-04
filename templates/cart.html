@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    {% if lepic == "Cart empty" %}
+        <h2>{{ lepic }}</h2>
+    {% else %}
+        {% for x in cart %}
+            <div>
+                <h2>{{ books[x]['name'] }}</h2>
+                <span class="container">
+                <img class="center" width=250px src="/static/{{ books[x]['image'] }}">
+                </span>
+                <a class="order button" href="/cart/add/{{ books[x]['id'] }}">{{ books[x]['value'] }}$</a>
+            </div>
+        {% endfor %}
+    {% endif %}
+    <a href="/">back</a> <a href="/clear">clear cart</a>
+{% endblock %}

@@ -1,10 +1,15 @@
 {% extends "layout.html" %}
 
 {% block content %}
+    <span class="header">
+        <header>
+            <h1>EBIC BÖÖKS STORE</h1>
+        </header>
+    </span>
     <span class="bleh">
-        <span class="items">
+        <span class="items" id="books">
         {% for x in books %}
-            <main>
+            <main id="book{{ x['id'] }}">
                 <div>
                     <h2>{{ x['name'] }}</h2>
                     <span class="container">

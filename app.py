@@ -17,23 +17,23 @@ books = [{'id': 0, 'name': "The Anarchist Cookbook", 'value': "34.99", 'image': 
 
 @app.route('/')
 def index():
-	return rend('t.html', books=books)
+	return rend('store.html', books=books)
 
 @app.route('/cart')
 def cart():
 	if 'cart' not in session:
-		return '<h2>Karfa tóm</h2><a href="/">back</a>'
-	lepic = ""
+		return rend('cart.html', cart="Cart empty", books=books)
+	cart = []
 	for item in session['cart']:
-		lepic += " " + item
-	return f'<h2>{lepic}</h2><a href="/">back</a> <a href="/clear">clear cart</a>'
+		cart += int(item)
+	return rend('cart.html', cart=cart, books=books)
 
 @app.route('/cart/add/<int:ID>')
 def add(ID):
 	if 'cart' not in session:
 		session['cart'] = []
 	session['cart'] += str(books[ID]['id'])
-	return '<head><meta http-equiv="Refresh" content="0; url=/"></head>'
+	return f'<head><meta http-equiv="Refresh" content="0; url=/#book{ID}"></head>'
 
 @app.route('/clear')
 def clear_cart():

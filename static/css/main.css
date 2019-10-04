@@ -18,7 +18,7 @@ header {
     background-repeat: no-repeat;
     background-size: cover;
     height: 100%;
-    padding: 300px 0;
+    padding: 275px 0 325px 0;
 }
 
 h1 {
@@ -66,6 +66,7 @@ img {
     width: 250px;
     height: auto;
     grid-area: img;
+    border-radius: 4px
 }
 
 .center {
