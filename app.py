@@ -25,7 +25,7 @@ def cart():
 		return rend('cart.html', cart="Cart empty", books=books)
 	cart = []
 	for item in session['cart']:
-		cart += int(item)
+		cart.append(int(item))
 	return rend('cart.html', cart=cart, books=books)
 
 @app.route('/cart/add/<int:ID>')

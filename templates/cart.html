@@ -1,8 +1,8 @@
 {% extends "layout.html" %}
 
 {% block content %}
-    {% if lepic == "Cart empty" %}
-        <h2>{{ lepic }}</h2>
+    {% if cart == "Cart empty" %}
+        <h2>{{ cart }}</h2>
     {% else %}
         {% for x in cart %}
             <div>
