@@ -17,7 +17,7 @@ books = [{'id': 0, 'name': "The Anarchist Cookbook", 'value': "34.96", 'image': 
 		 {'id': 7, 'name': "The Bible", 'value': "15.96", 'image': "tb.jpg"},
 		 {'id': 8, 'name': "Fifty Shades of Gray", 'value': "22.96", 'image': "fsog.jpg"},
 		 {'id': 9, 'name': "The Hobbit", 'value': "37.96", 'image': "th.jpg"},
-		 {'id': 10, 'name': "The Boy in Striped Pjamas", 'value': "24.96", 'image': "tbisp.jpg"},
+		 {'id': 10, 'name': "The Boy in Striped Pajamas", 'value': "24.96", 'image': "tbisp.jpg"},
 		 {'id': 11, 'name': "The Diary of a Young Girl", 'value': "39.96", 'image': "tdoayg.jpg"},
 		 {'id': 12, 'name': "Trump: The Art of the Deal", 'value': "33.96", 'image': "taotd.jpg"},
 		 {'id': 13, 'name': "Ninja: Get Good: My Ultimate Guide to Gaming", 'value': "16.96", 'image': "ggmugtg.jpg"}]
