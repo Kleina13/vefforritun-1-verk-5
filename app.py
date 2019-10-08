@@ -29,13 +29,18 @@ def cart():
 	for item in cartQuantity:
 		item.append(float(item[0]['value']) * item[1])
 		price_sum += float(item[0]['value']) * item[1]
+	for item in cartQuantity:
+		item[2] = round(item[2], 3)
 	price_sum = round(price_sum, 3)
 	return rend('cart.html', cart=cart, books=books, cartQuantity=cartQuantity, price_sum=price_sum)
 @app.route('/cart/add/<int:ID>')
 def add(ID):
 	if 'cart' not in session:
 		session['cart'] = []
-	session['cart'] += str(books[ID]['id'])
+	cart = session['cart']
+	cart.append(books[ID]['id'])
+	session['cart'] = cart
+	print(session['cart'])
 	return f'<head><meta http-equiv="Refresh" content="0; url=/#book{ID}"></head>'
 # cart <<<<<<<<<<<<
 
@@ -64,18 +69,20 @@ def remove(ID):
 def secret():
 	if 'cart' not in session: 
 		session['cart'] = []
+	cart = session['cart']
 	for item in books: 
-		session['cart'] += str(item['id'])
+		cart.append(item['id'])
+	session['cart'] = cart
 	return '<head><meta http-equiv="Refresh" content="0; url=/cart"></head>'
 # dev <<<<<<<<<<<<<
 
 # error <<<<<<<<<<<
 @app.errorhandler(404)
 def error404(error):
-	return '<br><br><h1 style="text-align: center;">ERROR 404</h1><h2 style="text-align: center;">page not found<h2>'
+	return rend('error.html', ERROR=404)
 @app.errorhandler(500)
 def error500(error):
-	return '<br><br><h1 style="text-align: center;">ERROR 500</h1><h2 style="text-align: center;">page not found<h2>'
+	return rend('error.html', ERROR=500)
 # error <<<<<<<<<<<
 
 if __name__ == "__main__":

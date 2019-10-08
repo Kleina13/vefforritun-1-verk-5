@@ -17,7 +17,7 @@ body {
 .header {
     text-align: center; 
     padding: fill;
-    background-image: url("/static/bookround.jpg");
+    background-image: url('/static/img/bookround.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
