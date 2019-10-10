@@ -15,6 +15,10 @@ with open('books.txt') as file:
 def index():
 	return rend('store.html', books=books)
 
+@app.route('/checkout')
+def checkout():
+	return rend('checkout.html')
+
 # cart <<<<<<<<<<<<
 @app.route('/cart')
 def cart():
@@ -79,10 +83,10 @@ def secret():
 # error <<<<<<<<<<<
 @app.errorhandler(404)
 def error404(error):
-	return rend('error.html', ERROR=404)
+	return rend('error.html', error_type=404, error=error)
 @app.errorhandler(500)
 def error500(error):
-	return rend('error.html', ERROR=500)
+	return rend('error.html', error_type=500, error=error)
 # error <<<<<<<<<<<
 
 if __name__ == "__main__":
