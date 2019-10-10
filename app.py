@@ -15,7 +15,7 @@ with open('books.txt') as file:
 def index():
 	return rend('store.html', books=books)
 
-@app.route('/checkout')
+@app.route('/checkout', methods=['GET', 'POST'])
 def checkout():
 	return rend('checkout.html')
 
